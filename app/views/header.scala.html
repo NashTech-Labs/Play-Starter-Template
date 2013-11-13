@@ -1,0 +1,53 @@
+@(userId : Option[String],section: String = "")
+@import models.UserModel
+@import org.bson.types.ObjectId
+
+@getUserName(userId:String)= @{
+   UserModel.findUserById(new ObjectId(userId)) match{
+   case None =>""
+   case Some(user) =>user.EmailId
+   }
+}	
+
+<div class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">@Messages("views.main.logo")</a>
+        </div>
+        <div id = "loginOrRegister">
+        	<!-- <a  data-toggle="modal" data-target="#myModal">@Messages("views.header.login")</a> -->
+        @userId match {
+                            case None => { 
+							        	<a href = "/user/login">@Messages("views.header.login")</a>
+							        	<span class = "divider">|</span>
+							        	<a  href="/user/signup">@Messages("views.header.register")</a>
+							        	}
+						    case Some(userId: String) => { 
+						   				<a id = "userInfo">@getUserName(userId)</a><br>
+						   				<a id = "signOut" href="/signOut">@Messages("views.header.signOut")</a>
+						    }
+				}
+        </div>
+			<div id = "navSearchBox" class="col-lg-3">
+				<div class="input-group">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+					</span> <input type="text" class="form-control">
+				</div>
+				<!-- /input-group -->
+			</div>
+        <div  class="navbar-collapse collapse">
+          <ul id = "navElements" class="nav navbar-nav navbar-right">
+            <li><a href="./">@Messages("views.header.create.pulse")</a></li>
+            <li><a href="../navbar-static-top/">@Messages("views.header.check.pulse")</a></li>
+            <li><a href="../navbar-fixed-top/">@Messages("views.header.my.pulse")</a></li>
+            <li><a href="../navbar-fixed-top/">@Messages("views.header.report")</a></li>
+            <li><a href="../navbar-fixed-top/">@Messages("views.header.Q.A")</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+     </div>

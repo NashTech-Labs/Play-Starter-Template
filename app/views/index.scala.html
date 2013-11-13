@@ -1,0 +1,36 @@
+@(message: String="")(implicit flash: play.api.mvc.Flash , session: play.api.mvc.Session , lang: Lang)
+@main("Public Pulse", session.get("userId")) {
+    <div class="jumbotron">
+      </div>
+      <hr>
+         <div class="centered">
+			<div class="col-lg-8">
+					 <input type="text" class="form-control" placeholder="Enter Near By Pin Code/Street Name/Area">
+			</div>
+			 <button type="button" class="btn btn-primary" title="Take a pride is a way to">Take Pride</button>
+			 <button type="button" class="btn btn-primary">Report An Issue</button>
+		</div>
+		<div class = "bottomContent">
+		<div class="row">
+            <div class="col-6 col-sm-6 col-lg-4">
+              <h4>@Messages("views.index.recently.reported")</h4>
+              <hr>
+              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div><!--/span-->
+            <div class="col-6 col-sm-6 col-lg-4">
+              <h4>@Messages("views.index.top.rated.pulse")</h4>
+              <hr>
+              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div><!--/span-->
+            <div class="col-6 col-sm-6 col-lg-4">
+              <h4>@Messages("views.index.listed.articles")</h4>
+              <hr>
+              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div><!--/span-->
+           </div>
+          </div>
+		
+}

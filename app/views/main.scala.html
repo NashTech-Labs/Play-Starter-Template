@@ -1,0 +1,66 @@
+@(title: String, userId : Option[String], section: String = "")(content: Html)
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>@title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("bootstrap/css/bootstrap.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/models/javascriptModels.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("bootstrap/js/bootstrap.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/models/validateJs.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/jquery.validate.js")" type="text/javascript"></script>
+        
+        
+        <script type="text/javascript">
+        window.setTimeout(function() { $(".alert").alert('close'); }, 10000);
+        function open_win_login(url,w,h)
+	    {
+	    	          wleft = (screen.width - w) / 2;
+	    	 	      wtop = (screen.height - h) / 2;
+	    	 	      window.open(url, name,
+	    	                               'width=' + w + ', height=' + h + ', ' +
+	    	 	                           'left=' + wleft + ', top=' + wtop + ', ' +
+	    		                           'location=no, menubar=no, ' +
+	    	 	                           'status=no, toolbar=no, scrollbars=no, resizable=no');
+	    	 	     						window.resizeTo(w, h);
+	    	 	    						window.moveTo(wleft, wtop);
+	    	 	  							window.focus();
+	    }
+        function close_win(redirectUrl) {
+            window.opener.location=redirectUrl
+            window.opener.focus();
+            window.close();
+        }
+        </script>
+    </head>
+
+    <body>
+	    <div class="container">
+	    @header(userId, section)
+	       @content
+	       <div id = "footer">
+			       <div class="pull-left">
+			       	<a>@Messages("views.main.footer.about.public.pulse")</a>
+			       	<a>@Messages("views.main.footer.f.a.q")</a>
+			       	<a>@Messages("views.main.footer.feedback.contact.us")</a>
+			       	<a>@Messages("views.main.footer.how.public.pulse.help")</a>
+			       	<a>@Messages("views.main.footer.terms.use")</a>
+			       	<a>@Messages("views.main.footer.privacy.policy")</a>
+			       	</div>
+	       			<div class="pull-right">
+	       				<div class="social-link">
+	       						<img src="@routes.Assets.at("images/facebook.png")"	alt="Facebook" title="Facebook" />
+	       						<img src="@routes.Assets.at("images/twitter.png")"	alt="Twitter" title="Twitter" />
+	       						<img src="@routes.Assets.at("images/gplus.png")"	alt="Google Plus" title="Google Plus" />
+	       						<img src="@routes.Assets.at("images/pinterest.png")"	alt="Pinterest" title="Pinterest" />
+	       				</div>
+	       			</div>
+	       </div>
+	    </div>
+    </body>
+</html>

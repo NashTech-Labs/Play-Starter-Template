@@ -1,0 +1,17 @@
+@(userId:String ,status:String) (implicit flash: play.api.mvc.Flash , session: play.api.mvc.Session , lang: Lang)
+@main("Public Pulse",Option(userId)) {
+<body onload="redirect('@status');"></body>
+
+<script type="text/javascript">
+	function redirect(status) {
+		if (status == "success")
+			{
+				close_win('http://localhost:9000/home');
+			}
+		else
+			{
+				close_win('http://localhost:9000/loginFailure');
+			}
+	}
+</script>
+}

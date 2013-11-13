@@ -1,0 +1,55 @@
+@(login:Form[Login], alertMap :Map[String,String])(implicit flash: play.api.mvc.Flash
+,session: play.api.mvc.Session , lang: Lang)
+@main("Signin",session.get("userId")){
+@alertMap.get("error") match{
+case None => { @*do nothing*@}
+case Some(alretMessage) => { 
+<div class="alert alert-error">
+	<a class="close" data-dismiss="alert">×</a> <strong
+		style="text-transform: capitalize;">error</strong>@alretMessage
+</div>
+}
+}
+<div id="myModal" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title" id="myModalLabel"><span class="glyphicon glyphicon-lock"></span> <label id = "labelLogin">Login</label> <label id = "labelBox">Box</label><br>
+        </div>
+        <hr>
+      </div>
+      <div class="modal-body">
+      		<form id = "login-form" method="POST" action="/user/authenticate">
+      						<div class="control-group">
+								<div class="controls">
+									<span id = "profilePic" class="glyphicon glyphicon-user"></span><input id="EmailId" name="EmailId" type="text" class="form-control" placeholder="Username / Email">
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="controls">
+								       <input id="Password" name="Password" type="password" class="form-control" placeholder="Password"><br>
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="controls" >
+									<div id = "registrationDiv"><a href="/user/signup">Not Yet Registered!!</a><span><input id = "submit"  type="submit" value="submit"  class="btn btn-primary" /></span></div>
+								</div>
+							</div>
+			  </form>
+			    
+			    <div id = "optionDiv">
+			      <a id = "openOptionDiv" >OPTIONS</a><span class="glyphicon glyphicon-wrench"></span>
+			    </div>
+			    <div id = "loginWithSocialMedia">
+			    			<label>Or Sign Up With:</label><br><hr>
+			    			<a onclick ="open_win_login('/user/google/login',800,400)" href="javascript:void(0);"><img src="@routes.Assets.at("images/socialLogins/google.png")"	alt="Google" title="Google" /></a>
+			    			<img src="@routes.Assets.at("images/socialLogins/facebook.png")" alt="Facebook" title="Facebook" />
+       						<img src="@routes.Assets.at("images/socialLogins/linkedin.png")" alt="LinkedIn" title="LinkedIn" />
+       						<img src="@routes.Assets.at("images/socialLogins/twitter.png")"	alt="Twitter" title="Twitter" />
+			    </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+}
