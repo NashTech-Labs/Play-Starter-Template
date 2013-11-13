@@ -15,8 +15,9 @@ POST    /user/register              controllers.UserController.registerUser
 GET     /signOut					controllers.UserController.signOut
 GET  	/user/google/login 		    controllers.Google.googleLogin
 GET 	/user/google/callback	    controllers.Google.googleCallback
+GET     /user/linkedin/login        controllers.LinkedInController.linkedinLogin
+GET     /user/linkedin/callback     controllers.LinkedInController.linkedinCallback
 GET     /user/loginFailure		    controllers.Application.loginFailureViaSocialNetworks
-
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

@@ -21,27 +21,25 @@ object UserController extends Controller {
     Forms.mapping(
       "EmailId" -> email,
       "Password" -> nonEmptyText)(Login.apply)(Login.unapply))
-  
-      val signUpForm = Form(
+
+  val signUpForm = Form(
     Forms.mapping(
       "EmailId" -> email,
       "Password" -> nonEmptyText(minLength = minLen),
       "ConfirmPassword" -> nonEmptyText)(RegistrationForm.apply)(RegistrationForm.unapply))
-      
-      
+
   def signIn() = Action { implicit request =>
-    Ok(views.html.user.login(login,  Map("" -> "")))
+    Ok(views.html.user.login(login, Map("" -> "")))
   }
-  
-  
-    def signup() = Action { implicit request =>
+
+  def signup() = Action { implicit request =>
     Ok(views.html.user.signUp(signUpForm, Map("" -> "")))
   }
 
-    /**
-     * Authenticate user
-     */
- def authenticateUser = Action { implicit request =>
+  /**
+   * Authenticate user
+   */
+  def authenticateUser = Action { implicit request =>
     render {
       case Accepts.Html() =>
         login.bindFromRequest.fold(
@@ -58,33 +56,33 @@ object UserController extends Controller {
           })
     }
   }
- 
- /**
-  * Register User
-  */
-   def registerUser() = Action { implicit request =>
+
+  /**
+   * Register User
+   */
+  def registerUser() = Action { implicit request =>
     signUpForm.bindFromRequest.fold(
       errors => BadRequest(views.html.user.signUp(errors, Map("error" -> Messages("error")))),
       signUpForm => {
         UserModel.findUserByEmail(signUpForm.EmailId) match {
           case None =>
-                val encryptedPassword = EncryptionUtility.encryptPassword(signUpForm.Password)
-                val user = UserModel(new ObjectId, signUpForm.EmailId, encryptedPassword)
-                val userOpt = UserModel.createUser(user)
-                userOpt match {
-                  case None => Redirect("/").flashing("error" -> Messages("error"))
-                  case Some(userId) =>
-                    Redirect("/").flashing("success" -> Messages(": Sucessfully Registered"))
-                    val userSession = request.session + ("userId" -> user.id.toString)
-                    Results.Redirect("/").withSession(userSession)
-                }
+            val encryptedPassword = EncryptionUtility.encryptPassword(signUpForm.Password)
+            val user = UserModel(new ObjectId, signUpForm.EmailId, encryptedPassword)
+            val userOpt = UserModel.createUser(user)
+            userOpt match {
+              case None => Redirect("/").flashing("error" -> Messages("error"))
+              case Some(userId) =>
+                Redirect("/").flashing("success" -> Messages(": Sucessfully Registered"))
+                val userSession = request.session + ("userId" -> user.id.toString)
+                Results.Redirect("/").withSession(userSession)
+            }
           case Some(alreadyExistingUser) =>
             Ok(views.html.user.signUp(UserController.signUpForm.fill(signUpForm), Map("error" -> Messages(": EmailId Already Exist"))))
         }
       })
   }
-   
-   /**
+
+  /**
    * Sign out
    */
   def signOut: Action[play.api.mvc.AnyContent] = Action {

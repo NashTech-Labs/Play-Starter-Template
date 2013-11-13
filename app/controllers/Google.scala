@@ -82,7 +82,7 @@ object Google extends Controller {
               UserModel.findUserByEmail(userEmail.get) match {
                 case None =>
                   val password = EncryptionUtility.generateRandomPassword
-                    val user = UserModel(new ObjectId, userEmail.get, password)
+                  val user = UserModel(new ObjectId, userEmail.get, password)
                   val userOpt = UserModel.createUser(user)
                   userOpt match {
                     case None => Redirect("/").flashing("error" -> Messages("error"))

@@ -43,8 +43,8 @@ case Some(alretMessage) => {
 			    <div id = "loginWithSocialMedia">
 			    			<label>Or Sign Up With:</label><br><hr>
 			    			<a onclick ="open_win_login('/user/google/login',800,400)" href="javascript:void(0);"><img src="@routes.Assets.at("images/socialLogins/google.png")"	alt="Google" title="Google" /></a>
-			    			<img src="@routes.Assets.at("images/socialLogins/facebook.png")" alt="Facebook" title="Facebook" />
-       						<img src="@routes.Assets.at("images/socialLogins/linkedin.png")" alt="LinkedIn" title="LinkedIn" />
+			    			<a><img  src="@routes.Assets.at("images/socialLogins/facebook.png")" alt="Facebook" title="Facebook" /></a>
+       						<a onclick ="open_win_login('/user/linkedin/login',600,400)" href="javascript:void(0);"><img src="@routes.Assets.at("images/socialLogins/linkedin.png")" alt="LinkedIn" title="LinkedIn" /></a>
        						<img src="@routes.Assets.at("images/socialLogins/twitter.png")"	alt="Twitter" title="Twitter" />
 			    </div>
       </div>

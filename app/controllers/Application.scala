@@ -17,18 +17,17 @@ object Application extends Controller {
         Ok(views.html.index(request.session.get(userId).getOrElse("")))
     }
   }
-  
+
   def home = Action { implicit request =>
     request.session.get("userId") match {
       case None => Redirect(routes.Application.index)
 
-     case Some(userId) =>
-     val userSession = request.session + ("userId" -> userId.toString)
+      case Some(userId) =>
+        val userSession = request.session + ("userId" -> userId.toString)
         Ok(views.html.index(request.session.get(userId).getOrElse("")))
     }
   }
 
-  
   /**
    * Redirect To Login Page When Login Failed Via Social Networks
    */
@@ -37,13 +36,12 @@ object Application extends Controller {
     Redirect("/user/signIn").flashing("error" -> Messages("error"))
   }
 
-  
   /**
    * JScript Routes
    */
   def javascriptRoutes = Action { implicit request =>
 
     Ok(
-        Routes.javascriptRouter("jsRoutes")()).as("text/javascript")}
-  
+      Routes.javascriptRouter("jsRoutes")()).as("text/javascript")
+  }
 }

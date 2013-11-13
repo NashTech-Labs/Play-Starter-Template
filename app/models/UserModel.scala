@@ -36,7 +36,6 @@ object UserModel {
    * Insert User
    */
   def createUser(user: UserModel) = {
-    println("enter")
     UserModelDAO.insert(user)
   }: Option[ObjectId]
 

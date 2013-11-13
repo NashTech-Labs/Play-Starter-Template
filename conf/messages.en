@@ -7,11 +7,11 @@ form.warning = Warning
 form.info = Information
 
 #Views : Index Page
-views.index.title = Public Pulse
+views.index.title = Play Template
 views.index.welcomemessage = Welcome
 
 #Views : Main Page
-views.main.logo = Public Pulse
+views.main.logo = Play Template
 views.main.copyright.message = Company 2012
 
 #views: navbars
