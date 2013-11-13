@@ -16,6 +16,7 @@ import play.api.Play
 import org.bson.types.ObjectId
 import utils.EncryptionUtility
 import models.UserModel
+import play.api.i18n.Messages
 
 object LinkedInController extends Controller {
   val apiKey: String = Play.current.configuration.getString("linkedin_api_key").get
@@ -27,7 +28,6 @@ object LinkedInController extends Controller {
   /**
    * Get OAuthService Request
    */
-
   def getOAuthService: OAuthService = {
     val service: OAuthService = new ServiceBuilder()
       .provider(classOf[LinkedInApi])
@@ -76,11 +76,21 @@ object LinkedInController extends Controller {
               val userEmailId = (linkedinXML \\ "email-address").text.trim
               val userNetwokId = (linkedinXML \\ "id").text.trim
               val password = EncryptionUtility.generateRandomPassword
-              val user = UserModel(new ObjectId, userEmailId, password)
-              val userOpt = UserModel.createUser(user)
-              
-              val userSession = request.session + (currentUserId -> user.id.toString)
-              Ok(views.html.RedirectMain(user.id.toString, "success")).withSession(userSession)
+              UserModel.findUserByEmail(userEmailId) match {
+                case None =>
+                  val password = EncryptionUtility.generateRandomPassword
+                  val user = UserModel(new ObjectId, userEmailId, password)
+                  val userOpt = UserModel.createUser(user)
+                  userOpt match {
+                    case None => Redirect("/").flashing("error" -> Messages("error"))
+                    case Some(userId) =>
+                      val userSession = request.session + ("userId" -> user.id.toString)
+                      Ok(views.html.RedirectMain(user.id.toString, "success")).withSession(userSession)
+                  }
+                case Some(alreadyExistingUser) =>
+                  val userSession = request.session + ("userId" -> alreadyExistingUser.id.toString)
+                  Ok(views.html.RedirectMain(alreadyExistingUser.id.toString, "success")).withSession(userSession)
+              }
             case 400 =>
               Logger.error("Error 400-  During Login Through LinkedIn- " + response.getBody)
               Ok(views.html.RedirectMain("", "failure"))
