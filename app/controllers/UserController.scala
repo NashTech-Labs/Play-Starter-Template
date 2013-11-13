@@ -74,7 +74,9 @@ object UserController extends Controller {
                 userOpt match {
                   case None => Redirect("/").flashing("error" -> Messages("error"))
                   case Some(userId) =>
-                    Redirect("/").flashing("success" -> Messages("success"))
+                    Redirect("/").flashing("success" -> Messages(": Sucessfully Registered"))
+                    val userSession = request.session + ("userId" -> user.id.toString)
+                    Results.Redirect("/").withSession(userSession)
                 }
           case Some(alreadyExistingUser) =>
             Ok(views.html.user.signUp(UserController.signUpForm.fill(signUpForm), Map("error" -> Messages(": EmailId Already Exist"))))

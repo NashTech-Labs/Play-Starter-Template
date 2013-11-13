@@ -1,0 +1,25 @@
+@(flash:play.api.mvc.Flash)(implicit lang: Lang)
+@import play.api.i18n.Messages
+
+@flash.get("success").map { message =>
+<div class="alert alert-success">
+	<a class="close" data-dismiss="alert">×</a> <strong
+		style="text-transform: capitalize;">@Messages("form.success") </strong>@message
+</div>
+
+} @flash.get("error").map { message =>
+<div class="alert alert-error">
+	<a class="close" data-dismiss="alert">×</a> <strong
+		style="text-transform: capitalize;">@Messages("form.error") </strong>@message
+</div>
+} @flash.get("info").map { message =>
+<div class="alert alert-info">
+	<a class="close" data-dismiss="alert">×</a> <strong
+		style="text-transform: capitalize;">@Messages("form.info") </strong>@message
+</div>
+}@flash.get("warning").map { message =>
+<div class="alert alert-block">
+	<a class="close" data-dismiss="alert">×</a> <strong
+		style="text-transform: capitalize;">@Messages("form.warning") </strong>@message
+</div>
+}
