@@ -1,6 +1,6 @@
 @(login:Form[Login], alertMap :Map[String,String])(implicit flash: play.api.mvc.Flash
 ,session: play.api.mvc.Session , lang: Lang)
-@main("Signin",session.get("userId")){
+@main("SignIn",session.get("userId")){
 @alertMap.get("error") match{
 case None => { @*do nothing*@}
 case Some(alretMessage) => { 
@@ -45,7 +45,7 @@ case Some(alretMessage) => {
 			    			<a onclick ="open_win_login('/user/google/login',800,400)" href="javascript:void(0);"><img src="@routes.Assets.at("images/socialLogins/google.png")"	alt="Google" title="Google" /></a>
 			    			<a><img  src="@routes.Assets.at("images/socialLogins/facebook.png")" alt="Facebook" title="Facebook" /></a>
        						<a onclick ="open_win_login('/user/linkedin/login',600,400)" href="javascript:void(0);"><img src="@routes.Assets.at("images/socialLogins/linkedin.png")" alt="LinkedIn" title="LinkedIn" /></a>
-       						<img src="@routes.Assets.at("images/socialLogins/twitter.png")"	alt="Twitter" title="Twitter" />
+       						<a onclick ="open_win_login('/user/twitter/twitterLogin',600,400)" href="javascript:void(0);"><img src="@routes.Assets.at("images/socialLogins/twitter.png")"	alt="Twitter" title="Twitter" /></a>
 			    </div>
       </div>
     </div><!-- /.modal-content -->
