@@ -23,9 +23,10 @@
         	<!-- <a  data-toggle="modal" data-target="#myModal">@Messages("views.header.login")</a> -->
         @userId match {
                             case None => { 
-							        	<a href = "/user/login">@Messages("views.header.login")</a>
+                            <a href = "/user/login"><img id = "loginButton" src="@routes.Assets.at("images/loginButton.gif")" alt="login" title="Login" /></a>
+							        	<!-- <a href = "/user/login">@Messages("views.header.login")</a>
 							        	<span class = "divider">|</span>
-							        	<a  href="/user/signup">@Messages("views.header.register")</a>
+							        	<a  href="/user/signup">@Messages("views.header.register")</a> -->
 							        	}
 						    case Some(userId: String) => { 
 						   				<a id = "userInfo">@getUserName(userId)</a><br>

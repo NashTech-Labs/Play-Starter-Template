@@ -90,7 +90,14 @@ body {
 	background: white;
 }
 
-#myModal div.modal-content{
+#myModal div.login-content{
+	-webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+border-radius: 6px;
+outline: none;
+width:600px;
+margin-right:auto;
+margin-left:auto;
 background: rgb(151,151,151); /* Old browsers */
 background: -moz-linear-gradient(top,  rgba(151,151,151,1) 0%, rgba(158,158,158,1) 0%, rgba(166,166,166,1) 0%, rgba(149,149,149,1) 39%, rgba(132,132,132,1) 76%, rgba(123,123,123,1) 91%, rgba(107,107,107,1) 98%, rgba(133,133,133,1) 100%, rgba(118,118,118,1) 100%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(151,151,151,1)), color-stop(0%,rgba(158,158,158,1)), color-stop(0%,rgba(166,166,166,1)), color-stop(39%,rgba(149,149,149,1)), color-stop(76%,rgba(132,132,132,1)), color-stop(91%,rgba(123,123,123,1)), color-stop(98%,rgba(107,107,107,1)), color-stop(100%,rgba(133,133,133,1)), color-stop(100%,rgba(118,118,118,1))); /* Chrome,Safari4+ */
@@ -107,14 +114,19 @@ border: 1px solid white;
 	border-top: none;
 }
 
-#myModal div.modal-header{
+#myModal div.login-header{
 	font-weight:lighter;
 	letter-spacing:0.50px;
 	font-size:14px;
 	border-bottom: none;
 }
 
-.modal-header hr{
+#myModal div.login-body{
+	position: relative;
+	padding: 20px;
+}
+
+.login-header hr{
 	margin-top: 0px;
 	}
 
@@ -123,6 +135,7 @@ border: 1px solid white;
 }
 
 #myModalLabel{
+margin-top:10px;
 	padding-left:7px;
 }
 
@@ -137,11 +150,11 @@ border: 1px solid white;
 	margin-bottom: 20px;
 }
 
-.modal-body{
+.login-body{
 	margin-top: -45px;
 }
 
-.modal-body input {
+.login-body input {
 	width: 85%;
 	margin-left: auto;
 	margin-right: auto;
@@ -219,6 +232,45 @@ border: 1px solid white;
 }
 
 #signOut{
-	
 	margin-left: 50px;
+}
+
+#loginButton{
+	height: 20px;
+	width: 80px;
+}
+
+.forgetPassword{
+	margin-top: -30px;
+	margin-bottom: 20px;
+}
+
+.forgetPassword a:focus{
+	color:white;
+}
+
+.forgetPassword a:hover{
+	color: white;
+}
+
+.forgetPassword a{
+	font-family: cursive;
+	color: white;
+	margin-left: 280px;
+}
+
+.popover{
+	width: 700px;
+}
+
+.popover label {
+	margin-left:20px;
+	color: #008080;
+	font-size: 14px;
+}
+
+#submitForgetPassword{
+	width: 140px;
+	margin-top: 10px;
+	margin-left: 20px;
 }

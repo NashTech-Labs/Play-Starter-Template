@@ -14,6 +14,7 @@
         <script src="@routes.Assets.at("bootstrap/js/bootstrap.min.js")" type="text/javascript"></script>
         <script src="@routes.Assets.at("javascripts/models/validateJs.js")" type="text/javascript"></script>
         <script src="@routes.Assets.at("javascripts/jquery.validate.js")" type="text/javascript"></script>
+                <script type="text/javascript" src="@routes.Application.javascriptRoutes"></script>
         
         
         <script type="text/javascript">
@@ -40,6 +41,17 @@
     </head>
 
     <body>
+    
+    <!-- <div id = "popover_content_wrapper"  style="display: none">
+										<label>Forget Password?????</label>
+										<form>
+												<div class="controls">
+													<input
+														id="forgetPasswordInput" name="forgetPasswordInput" type="text" class="form-control"
+														placeholder="Email">
+												</div>
+										</form>
+						</div> -->
 	    <div class="container">
 	    @header(userId, section)
 	       @content

@@ -17,9 +17,10 @@ GET  	/user/google/login 		    controllers.Google.googleLogin
 GET 	/user/google/callback	    controllers.Google.googleCallback
 GET     /user/linkedin/login        controllers.LinkedInController.linkedinLogin
 GET     /user/linkedin/callback     controllers.LinkedInController.linkedinCallback
-GET     /user/twitter/twitterLogin                      controllers.TwitterController.twitterLogin
-GET     /user/twitter/callback                          controllers.TwitterController.twitterCallBack
+GET     /user/twitter/twitterLogin  controllers.TwitterController.twitterLogin
+GET     /user/twitter/callback      controllers.TwitterController.twitterCallBack
 GET     /user/loginFailure		    controllers.Application.loginFailureViaSocialNetworks
+GET    /sendMailOnForgotPassword/:emailId               controllers.UserController.sendMailOnForgotPassword(emailId:String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

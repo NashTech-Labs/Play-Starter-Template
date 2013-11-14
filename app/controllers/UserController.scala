@@ -13,6 +13,9 @@ import models.UserModel
 import org.bson.types.ObjectId
 import play.api.i18n.Lang
 import play.api.Play.current
+import models.Alert
+import utils.PasswordHashing
+import utils.MailUtil
 
 object UserController extends Controller {
   val minLen = 6;
@@ -87,5 +90,24 @@ object UserController extends Controller {
    */
   def signOut: Action[play.api.mvc.AnyContent] = Action {
     Redirect("/").withNewSession.withLang(Lang("en"))
+  }
+  
+   /**
+   * Send Password To User Email Id
+   */
+
+  def sendMailOnForgotPassword(emailId: String): Action[play.api.mvc.AnyContent] = Action { implicit request =>
+    println("emailId--->"+emailId)
+    val users = UserModel.findUserByEmail(emailId)
+    if (users.isEmpty) {
+      Ok(false.toString)
+    } else {
+      val user = Option(users.toList(0)).get
+      val randomlyGeneratedPassword = PasswordHashing.generateRandomPassword
+      val encryptedPassword = PasswordHashing.encryptPassword(randomlyGeneratedPassword)
+     // UserModel.updateUser(user, encryptedPassword)
+    //  MailUtil.sendMailForForgotPassword(emailId, randomlyGeneratedPassword)
+      Ok(true.toString)
+    }
   }
 }

@@ -10,15 +10,16 @@ case Some(alretMessage) => {
 </div>
 }
 }
-<div id="myModal" >
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <div class="modal-title" id="myModalLabel"><span class="glyphicon glyphicon-lock"></span> <label id = "labelLogin">Login</label> <label id = "labelBox">Box</label><br>
-        </div>
-        <hr>
-      </div>
-      <div class="modal-body">
+
+<div id = "myModal">
+<div class="login-content">
+	<div class  = login-header>
+	 <div class="login-title" id="myModalLabel"><span class="glyphicon glyphicon-lock"></span> <label id = "labelLogin">Login</label> <label id = "labelBox">Box</label><br>
+		</div>
+	<hr>
+	</div>
+	
+	<div class="login-body">
       		<form id = "login-form" method="POST" action="/user/authenticate">
       						<div class="control-group">
 								<div class="controls">
@@ -30,13 +31,17 @@ case Some(alretMessage) => {
 								       <input id="Password" name="Password" type="password" class="form-control" placeholder="Password"><br>
 								</div>
 							</div>
+							<div class="forgetPassword">
+											<a  data-toggle="modal"	href="#forgot-password-modal">Forgot Password</a>
+								      <!--  <a id = "forgetPassword"  rel='popover' data-placement='right'  data-content=''>Forgot Password?</a> -->
+								</div>
 							<div class="control-group">
 								<div class="controls" >
 									<div id = "registrationDiv"><a href="/user/signup">Not Yet Registered!!</a><span><input id = "submit"  type="submit" value="submit"  class="btn btn-primary" /></span></div>
 								</div>
 							</div>
-			  </form>
-			    
+				</form>
+			   
 			    <div id = "optionDiv">
 			      <a id = "openOptionDiv" >OPTIONS</a><span class="glyphicon glyphicon-wrench"></span>
 			    </div>
@@ -48,8 +53,52 @@ case Some(alretMessage) => {
        						<a onclick ="open_win_login('/user/twitter/twitterLogin',600,400)" href="javascript:void(0);"><img src="@routes.Assets.at("images/socialLogins/twitter.png")"	alt="Twitter" title="Twitter" /></a>
 			    </div>
       </div>
+     </div>
+</div>
+
+
+
+<div id="forgot-password-modal" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Forgot Password</h4>
+      </div>
+      <div class="modal-body">
+       <form id="forgetPassword_form">
+						<div class="control-group">
+						<div class="controls">
+								<input id="EmailIdForgetPassword" name="EmailId" type="text" class="form-control" placeholder="Email">							
+							</div>
+						</div>
+					</form>
+					<div class="control-group">
+							<div class="controls">
+								<button id="recoverpassword" onclick="SendMail();"
+									class="btn btn-primary">Recover Password</button>
+								<img id="ajaxImageCtrl" src="@routes.Assets.at("images/load.gif")" style="display: none;" />
+							</div>
+						</div>
+					
+      </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+<script>
 
+/**
+ * Mail send to the email
+ */
+function SendMail(){
+		var userEmailId = $.trim($('#EmailIdForgetPassword').val());
+		ajaxCall = {
+			success : function(data) {
+				alert(data)
+			}
+		}
+		jsRoutes.controllers.UserController.sendMailOnForgotPassword(userEmailId).ajax(ajaxCall);
+		
+}
+	</script>
 }

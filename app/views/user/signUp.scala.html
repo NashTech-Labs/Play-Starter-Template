@@ -10,7 +10,53 @@ case Some(alretMessage) => {
 }
 }
 
-<div id="myModal" >
+
+
+<div id = "myModal">
+<div class="login-content">
+	<div class  = login-header>
+<div class="login-title" id="myModalLabel"><span class="glyphicon glyphicon-lock"></span> <label id = "labelLogin">Registration</label> <label id = "labelBox">Box</label><br>		</div>
+	<hr>
+	</div>
+	
+	<div class="login-body">
+      		<form id = "signup-form"  method ="POST" action="/user/register">
+      		
+      						<div class="control-group">
+								<div class="controls">
+									<span id = "profilePic" class="glyphicon glyphicon-user"></span><input id="EmailId" name="EmailId" id = "inputLogin" class="form-control" placeholder="Email">
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="controls">
+								       <input id="Password" name="Password" type="password" class="form-control" placeholder="Password">
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="controls">
+				       				<input name="ConfirmPassword" type="password" id="ConfirmPassword" class="form-control" placeholder="Confirm Password">
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="controls" >
+									<div id = "registrationDiv"><span><input style="margin-left: 200px;" id = "submit"  type="submit" value="submit"  class="btn btn-primary" /></span></div>
+								</div>
+							</div>
+			  </form>
+      </div>
+     </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- <div id="myModal" >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -42,7 +88,7 @@ case Some(alretMessage) => {
 								</div>
 							</div>
 			  </form>
-			   <!--  <div id = "optionDiv">
+			    <div id = "optionDiv">
 			      <a id = "openOptionDiv" >OPTIONS</a><span class="glyphicon glyphicon-wrench"></span>
 			    </div>
 			    <div id = "loginWithSocialMedia">
@@ -51,10 +97,10 @@ case Some(alretMessage) => {
 			    			<img src="@routes.Assets.at("images/socialLogins/facebook.png")" alt="Facebook" title="Facebook" />
        						<img src="@routes.Assets.at("images/socialLogins/linkedin.png")" alt="LinkedIn" title="LinkedIn" />
        						<img src="@routes.Assets.at("images/socialLogins/twitter.png")"	alt="Twitter" title="Twitter" />
-			    </div> -->
+			    </div>
       </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+    </div>/.modal-content
+  </div>/.modal-dialog
+</div>/.modal -->
 
 }

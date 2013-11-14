@@ -42,6 +42,8 @@ object Application extends Controller {
   def javascriptRoutes = Action { implicit request =>
 
     Ok(
-      Routes.javascriptRouter("jsRoutes")()).as("text/javascript")
+      Routes.javascriptRouter("jsRoutes")(
+        routes.javascript.UserController.sendMailOnForgotPassword  
+      )).as("text/javascript")
   }
 }

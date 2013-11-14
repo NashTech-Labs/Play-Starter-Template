@@ -53,4 +53,22 @@ $(document).ready(
 									'.control-group').addClass('success');
 						}
 					});
+			
+			$('#forgetPassword_form').validate(
+					{
+						rules : {
+							EmailId : {
+								required : true,
+								email : true
+							}
+						},
+						highlight : function(label) {
+							$(label).closest('.control-group')
+									.addClass('error');
+						},
+						success : function(label) {
+							label.text('OK!').addClass('valid').closest(
+									'.control-group').addClass('success');
+						}
+					});
 		}); // end document.ready
