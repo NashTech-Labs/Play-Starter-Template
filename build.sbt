@@ -15,7 +15,10 @@ libraryDependencies ++= Seq(
 	"commons-codec" % "commons-codec" % "1.8",
 	"org.twitter4j" % "twitter4j-core" % "3.0.3",
 	"com.restfb" % "restfb" % "1.6.9",
-	"org.scribe" % "scribe" % "1.3.5"
+	"org.scribe" % "scribe" % "1.3.5",
+	"com.typesafe.akka" %% "akka-actor" % "2.2.1",
+    "com.typesafe.akka" %% "akka-remote" % "2.2.1"
+    
 )     
 
 play.Project.playScalaSettings

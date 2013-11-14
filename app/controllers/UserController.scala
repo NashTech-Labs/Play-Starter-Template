@@ -51,7 +51,10 @@ object UserController extends Controller {
             val encryptedPassword = EncryptionUtility.encryptPassword(login.password.trim())
             val userOpt = UserModel.authenticateUserForSignIn(login.emailId.trim(), encryptedPassword)
             userOpt match {
-              case None => Redirect("/user/login").flashing("error" -> Messages("invalid Credentials"))
+             
+              case None => 
+                 Ok(views.html.user.login(UserController.login.fill(login), Map("error" -> Messages(": EmailId Not Exist"))))
+              
               case Some(user) =>
                 val userSession = request.session + ("userId" -> user.id.toString)
                 Redirect("/").withSession(userSession)
@@ -97,7 +100,6 @@ object UserController extends Controller {
    */
 
   def sendMailOnForgotPassword(emailId: String): Action[play.api.mvc.AnyContent] = Action { implicit request =>
-    println("emailId--->"+emailId)
     val users = UserModel.findUserByEmail(emailId)
     if (users.isEmpty) {
       Ok(false.toString)
@@ -106,7 +108,7 @@ object UserController extends Controller {
       val randomlyGeneratedPassword = PasswordHashing.generateRandomPassword
       val encryptedPassword = PasswordHashing.encryptPassword(randomlyGeneratedPassword)
      // UserModel.updateUser(user, encryptedPassword)
-    //  MailUtil.sendMailForForgotPassword(emailId, randomlyGeneratedPassword)
+      //MailUtil.sendEmailToRegeneratePassword(emailId, randomlyGeneratedPassword)
       Ok(true.toString)
     }
   }
