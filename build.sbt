@@ -1,4 +1,4 @@
-name := "public-pulse"
+name := "PlayStarterTemplate"
 
 version := "1.0-SNAPSHOT"
 
@@ -17,8 +17,6 @@ libraryDependencies ++= Seq(
 	"com.restfb" % "restfb" % "1.6.9",
 	"org.scribe" % "scribe" % "1.3.5",
 	"com.typesafe.akka" %% "akka-actor" % "2.2.1",
-    "com.typesafe.akka" %% "akka-remote" % "2.2.1"
-    
-)     
+    "com.typesafe.akka" %% "akka-remote" % "2.2.1")     
 
 play.Project.playScalaSettings

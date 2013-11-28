@@ -53,7 +53,7 @@ object MailUtil {
     val recepientAddress = new InternetAddress(emailId)
     authenticatedMessageAndSession._1.setFrom(new InternetAddress(supportMailString, supportMailString))
     authenticatedMessageAndSession._1.addRecipient(Message.RecipientType.TO, recepientAddress);
-    authenticatedMessageAndSession._1.setSubject("Recover Password For Public Pulse");
+    authenticatedMessageAndSession._1.setSubject("Recover Password");
     authenticatedMessageAndSession._1.setContent(
       "Hi" + break +
         "Your Password Is" + break +

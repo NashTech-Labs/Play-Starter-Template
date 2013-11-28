@@ -7,36 +7,36 @@ form.warning = Warning
 form.info = Information
 
 #Views : Index Page
-views.index.title = Public Pulse
+views.index.title = Play Starter Template
 views.index.welcomemessage = Welcome
 
 #Views : Main Page
-views.main.logo = Public Pulse
+views.main.logo = Play Starter Template
 views.main.copyright.message = Company 2012
 
 #views: navbars
 views.header.login = Login
 views.header.register = Register
 views.header.signOut = Sign Out
-views.header.create.pulse = Create Pulse
-views.header.check.pulse = Check Pulse
-views.header.my.pulse = My Pulse
+views.header.create.pulse = Create 
+views.header.check.pulse = Check 
+views.header.my.pulse = My Template
 views.header.report = Report
 views.header.Q.A = Q&A
 
 #views: Bottom Content
 views.index.recently.reported = Recently Reported
-views.index.top.rated.pulse = Top Rated Pulse
+views.index.top.rated.pulse = Top Rated 
 views.index.listed.articles = Listed Articles
 
 
 
 
 #views: footer
-views.main.footer.about.public.pulse = About Public Pulse
+views.main.footer.about.public.pulse = About Play Starter Template
 views.main.footer.f.a.q = FAQ
 views.main.footer.feedback.contact.us = Feedback/Contact Us
-views.main.footer.how.public.pulse.help = How Public Pulse Helps
+views.main.footer.how.public.pulse.help = How Play Starter Template Helps
 views.main.footer.terms.use = Terms Of Use
 views.main.footer.privacy.policy = Privacy Policy
 

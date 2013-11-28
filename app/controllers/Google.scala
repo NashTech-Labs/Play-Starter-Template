@@ -21,8 +21,8 @@ import play.api.i18n.Messages
 
 
 object Google extends Controller {
-  val apiKey: String = "86006814210-qte4kti9s3m251fepttl2nh7tc5vdjs0.apps.googleusercontent.com"
-  val apiSecret: String = "gry9NiXEkxlR7nYHqNw8OFoS"
+  val apiKey: String = "86006814210-qte4kti9s3m251fepttl2nhvdjs0.apps.googleusercontent.com"
+  val apiSecret: String = "gry9NiXEkxlR7nYw8OFoS"
   var requestToken: Token = null
   val authorizationUrlGoogle: String = "https://www.google.com/accounts/OAuthAuthorizeToken?oauth_token="
   val protectedResourceUrl: String = "https://www.googleapis.com/oauth2/v1/userinfo?alt=json"
